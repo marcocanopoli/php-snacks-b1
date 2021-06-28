@@ -11,12 +11,16 @@ Passare come parametri GET name, mail e age e verificare (cercando i metodi che 
     if (strlen($name) >= 3 ) {
         // echo nl2br("Name OK \n");
 
-        if ((strpos($mail, '@') !== false) && (strpos($mail, '.') !== false)) {
-            // echo nl2br("Mail OK \n");
+        if (strpos($mail, '@') !== false) {
+            $mailExploded = explode('@', $mail);
 
-            if ( is_numeric($age) == 1) {
-                // echo nl2br("Age OK \n");
-                $grantedAccess = true;
+            if (strpos($mailExploded[1], '.') !== false){
+                // echo nl2br("Mail OK \n");
+    
+                if (is_numeric($age) == 1) {
+                    // echo nl2br("Age OK \n");
+                    $grantedAccess = true;
+                }
             }
         }        
     }
